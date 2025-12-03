@@ -10,8 +10,10 @@ namespace API.Entities;
 // And each property that this entity class has is going to represent a column in that database.
 public class AppUser
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();  
+    public string Id { get; set; } = Guid.NewGuid().ToString();
     // because we've given our property a name of ID, then this is the property that it's going to use as the primary key of that table in the database.
     public required string DisplayName { get; set; }
     public required string Email { get; set; }
+    public required byte[] PasswordHash { get; set; }
+    public required byte[] PasswordSalt { get; set; }
 }
