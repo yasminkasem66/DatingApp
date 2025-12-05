@@ -1,0 +1,23 @@
+    <button
+      type="button"
+      class="btn transition-all duration-150 focus-visible:outline-none"
+      [class.btn-primary]="variant === 'primary'"
+      [class.btn-secondary]="variant === 'secondary'"
+      [class.btn-accent]="variant === 'accent'"
+      [class.btn-neutral]="variant === 'neutral'"
+      [class.btn-success]="variant === 'success'"
+      [class.btn-error]="variant === 'error'"
+      [class.btn-sm]="size === 'sm'"
+      [class.btn-md]="size === 'md'"
+      [class.btn-lg]="size === 'lg'"
+      [class.w-full]="fullWidth"
+      [class.opacity-60]="disabled"
+      [class.pointer-events-none]="disabled"
+      [attr.aria-label]="ariaLabel"
+      [attr.aria-disabled]="disabled ? true : null"
+      [disabled]="disabled"
+    >
+      <span class="inline-flex items-center gap-2">
+        <ng-content></ng-content>
+      </span>
+    </button>
