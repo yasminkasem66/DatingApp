@@ -1,0 +1,57 @@
+
+{
+  "lang": "en",
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "close": "Close",
+    "delete": "Delete",
+    "download": "Download",
+    "upload": "Upload"
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "search": "Search",
+    "country": "Country",
+    "date": "Date",
+    "description": "Description",
+    "chooseFile": "Choose file",
+    "required": "Required",
+    "optional": "Optional"
+  },
+  "errors": {
+    "required": "This field is required.",
+    "minLength": "Please enter at least {{min}} characters.",
+    "email": "Please enter a valid email address.",
+    "server": "Something went wrong. Please try again."
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "profile": "Profile",
+    "help": "Help",
+    "signOut": "Sign out"
+  },
+  "components": {
+    "modal": {
+      "title": "Confirm action",
+      "confirm": "Are you sure?",
+      "ok": "OK"
+    },
+    "table": {
+      "noData": "No data available",
+      "loading": "Loading..."
+    },
+    "toast": {
+      "success": "Operation completed successfully",
+      "error": "There was an error"
+    },
+    "fileUpload": {
+      "dropHere": "Drag & drop files here or click to browse"
+    }
+  }
+}

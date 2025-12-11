@@ -2,3 +2,76 @@
 
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+
+/* Font direction helpers */
+html[dir="rtl"] body {
+  font-family: var(--font-ar, "Noto Sans Arabic", Tahoma, Arial, sans-serif);
+}
+html[dir="ltr"] body {
+  font-family: var(--font-en, Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif);
+}
+
+/* Glassmorphism card surface */
+.surface-glass {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.25); /* neutral-400 alpha */
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-soft, 0 1px 2px rgba(15, 23, 42, 0.08), 0 1px 1px rgba(15, 23, 42, 0.06));
+  border-radius: 12px;
+}
+
+/* Accessible focus ring baseline */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.9),
+    0 0 0 4px #4FD7B8; /* primary-400 */
+}
+
+/* Logical spacing utilities for RTL/LTR without plugins */
+.ms-sm { margin-inline-start: 8px; }
+.me-sm { margin-inline-end: 8px; }
+.ps-sm { padding-inline-start: 8px; }
+.pe-sm { padding-inline-end: 8px; }
+
+/* RTL mirror class required by brief */
+html.rtl .rtl-mirror {
+  direction: rtl;
+}
+
+
+
+
+/* /////sgjhdfjkghdskfj */
+
+
+
+
+/* Logical properties (work both LTR and RTL) */
+.card {
+  padding: 16px;
+  margin-inline: 0; /* adjusts with dir */
+}
+
+/* Example utilities if needed */
+.ms-2 { margin-inline-start: .5rem; }
+.me-2 { margin-inline-end: .5rem; }
+
+/* Optional: fine-tune typography per language */
+html[dir="rtl"] body {
+  font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+}
+html[dir="ltr"] body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+
+/* await translationService.setLanguage('ar');
+
+const label = translationService.getTranslation('buttons.save'); 
+
+{{ 'buttons.save' | appTranslate }} */
