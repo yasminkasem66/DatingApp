@@ -1,0 +1,184 @@
+.login-page {
+  /* font-family: 'Galano Grotesque'; */
+  position: fixed;
+  inset: 0;
+}
+
+.bg-image {
+  position: absolute;
+  inset: 0;
+  background: url('/assets/login-bg.jpg') center / cover no-repeat;
+  z-index: 0;
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(57, 69, 88, 0.69);
+  z-index: 1;
+}
+
+/* center card */
+.center {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  width: 460px;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  padding: 41px;
+}
+
+/* logo block */
+.logo {
+  margin-bottom: 22px;
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+/* title with underline */
+
+.card__title {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 6px 0 22px;
+  padding-bottom: 7px;
+  color: #394558;
+}
+
+.card__title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px; /* aligns on top of gray border */
+  width: 40px; /* blue underline length */
+  height: 3px;
+  background-color: #394558;
+}
+
+/* form */
+
+.label {
+  display: block;
+  font-size: 12px;
+  color: #4d4d4f;
+  margin: 0 0 8px;
+  /* font-family: 'Galano Grotesque'; */
+}
+
+.field {
+  position: relative;
+  margin-bottom: 22px; /* vertical spacing between inputs */
+}
+
+.input {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #dedede;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 0 14px;
+  font-size: 13px;
+  color: #1f2530;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #c5c5c5;
+}
+
+/* password eye icon inside input (right aligned) */
+.eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  background: url('/assets/Eye.svg') center / contain no-repeat;
+  cursor: pointer;
+}
+
+/* remember me */
+.remember {
+  /* font-family: 'Galano Grotesque'; */
+  display: inline-flex;
+  font-size: 14px;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 22px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember__check {
+  appearance: none;
+  position: absolute;
+  opacity: 0;
+}
+
+.remember__box {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #d7d7d7;
+  border-radius: 3px;
+  background: #ffffff;
+  display: inline-block;
+  position: relative;
+}
+
+.remember__check:checked + .remember__box::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  top: 7%;
+  left: 3px;
+  height: 9px;
+  border: 2px solid #d7d7d7;
+  border-top: 0;
+  border-left: 0;
+  transform: rotate(45deg);
+}
+
+.remember__text {
+  text-align: center;
+  /* font-family: 'Galano Grotesque'; */
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+  color: #181c25;
+}
+
+/* button */
+.btn {
+  width: 100%;
+  height: 40px;
+  padding: 9px 28px;
+  background: #394558;
+  color: #ffffff;
+  border: 0;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+
+  /* font-family: 'Galano Grotesque'; */
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}

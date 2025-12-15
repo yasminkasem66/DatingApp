@@ -1,0 +1,78 @@
+<div class="p-6 space-y-6 bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+
+  <!-- Title -->
+  <h1 class="text-3xl font-extrabold text-gray-700 tracking-tight">
+    Members
+  </h1>
+
+  <!-- Loading Spinner -->
+  @if (loading()) {
+    <div class="flex justify-center items-center py-20">
+      <div
+        class="animate-spin h-12 w-12 rounded-full border-4 
+               border-indigo-300 border-t-indigo-500"
+      ></div>
+    </div>
+  }
+
+  <!-- Members Cards -->
+  @if (!loading()) {
+    <div
+      class="grid gap-8
+            sm:grid-cols-2 
+            lg:grid-cols-3 
+            xl:grid-cols-4"
+    >
+      @for (m of members(); track m.id) {
+        <div
+          class="
+            group
+            bg-white/80 backdrop-blur-sm
+            rounded-2xl shadow-sm border border-gray-200 
+            p-6 
+            transition-all duration-300 
+            hover:shadow-xl hover:-translate-y-1 hover:bg-white
+          "
+        >
+          <!-- Top Row -->
+          <div class="flex justify-between items-center">
+            <span class="text-xs text-gray-500 font-medium">
+              Member #{{ m.id }}
+            </span>
+
+            <span
+              class="h-3 w-3 rounded-full bg-emerald-400 shadow-[0_0_6px_1px_rgba(16,185,129,0.6)]"
+              title="Active"
+            ></span>
+          </div>
+
+          <!-- Name -->
+          <h2 class="text-xl font-semibold text-gray-800 mt-4 group-hover:text-indigo-600 transition-colors">
+            {{ m.name }}
+          </h2>
+
+          <!-- Email -->
+          <p class="text-gray-600 mt-1 text-sm">
+            {{ m.email }}
+          </p>
+
+          <!-- Button -->
+          <button
+            class="
+              mt-6 w-full py-2.5 
+              rounded-xl text-sm font-medium
+              bg-indigo-500 text-white
+              transition-all duration-200
+              hover:bg-indigo-600 
+              active:scale-95
+              shadow-md hover:shadow-lg
+            "
+          >
+            View Profile
+          </button>
+        </div>
+      }
+    </div>
+  }
+
+</div>
