@@ -21,7 +21,11 @@
         <label class="label">Password</label>
         <div class="field field--password">
           <input type="password" class="input" placeholder="password" />
-          <span class="eye" aria-hidden="true"></span>
+          <!--  [type]="showPassword ? 'text' : 'password'" -->
+          <span class="eye"  aria-hidden="true"></span>
+          <!-- [class.is-visible]="showPassword"
+           (click)="togglePassword()" 
+          -->
         </div>
 
         <label class="remember">

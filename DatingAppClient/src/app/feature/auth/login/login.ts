@@ -10,7 +10,6 @@ import { Component, OnInit } from '@angular/core';
 export class Login implements OnInit {
   ngOnInit(): void {
      console.log('ïnit');
-     
   }
 
 }
