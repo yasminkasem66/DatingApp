@@ -1,0 +1,63 @@
+<div class="login-page">
+  <div class="bg-image"></div>
+  <div class="bg-overlay"></div>
+
+  <div class="center">
+    <div class="card">
+      <div class="logo"></div>
+
+      <h2 class="card__title">Login</h2>
+
+      <form class="form" [formGroup]="loginForm" novalidate>
+        <!-- Email -->
+        <label class="label">E-mail Address</label>
+        <div class="field">
+          <input
+            type="email"
+            class="input"
+            placeholder="Ex: email@domain.com"
+            formControlName="email"
+          />
+        </div>
+
+        <!-- Password -->
+        <label class="label">Password</label>
+        <div class="field field--password">
+          <input
+            class="input"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password"
+            formControlName="password"
+          />
+
+          <span
+            class="eye"
+            [class.is-visible]="showPassword"
+            (click)="togglePassword()"
+            aria-hidden="true">
+          </span>
+        </div>
+
+        <!-- Remember me -->
+        <label class="remember">
+          <input
+            type="checkbox"
+            class="remember__check"
+            formControlName="rememberMe"
+          />
+          <span class="remember__box" aria-hidden="true"></span>
+          <span class="remember__text">Remember Me</span>
+        </label>
+
+        <!-- Submit -->
+        <button
+          type="button"
+          class="btn"
+          [disabled]="isSubmitting"
+          (click)="login()">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
