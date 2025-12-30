@@ -1,9 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRequest } from '../../models/login-request';
 import { Auth } from '../../services/auth';
 import { CommonModule } from '@angular/common';
+import lo from '@angular/common/locales/extra/lo';
 
 @Component({
   selector: 'app-login',
@@ -16,16 +17,23 @@ export class Login implements OnInit {
   private router = inject(Router);
   private fb = inject(FormBuilder);
   private authService = inject(Auth);
-
   loginForm!: FormGroup;
   showPassword = false;
   isSubmitting = false;
 
   ngOnInit(): void {
+    let email;
+    let password;
+    const rememberMe = localStorage.getItem('rememberMe') === 'true';
+    if (rememberMe) {
+      email = localStorage.getItem('email') || '';
+      password = localStorage.getItem('password') || '';
+    }
+
     console.log('initialize login component');
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      email: [email, [Validators.required, Validators.email]],
+      password: [password, Validators.required],
       rememberMe: [false],
     });
   }
@@ -50,12 +58,18 @@ export class Login implements OnInit {
     this.authService.login(payload).subscribe({
       next: (res) => {
         console.log('Login success', res);
-
         if (this.loginForm.value.rememberMe) {
-          localStorage.setItem('token', res.token);
+          localStorage.setItem('rememberMe', this.loginForm.value.rememberMe);
+          localStorage.setItem('email', this.loginForm.value.email);
+          localStorage.setItem('password', this.loginForm.value.password);
+          localStorage.setItem('currentUser', JSON.stringify(res));
         } else {
-          sessionStorage.setItem('token', res.token);
+          localStorage.setItem('rememberMe', 'false');
+          localStorage.removeItem('email');
+          localStorage.removeItem('password');
+          localStorage.setItem('currentUser', JSON.stringify(res));
         }
+        this.authService.loggedIn.set(true);
         this.router.navigateByUrl('/');
       },
       error: (err) => {
@@ -66,9 +80,4 @@ export class Login implements OnInit {
       },
     });
   }
-
-  // routeToLogin() {
-  //   this.router.navigateByUrl('/');
-  //   console.log('login');
-  // }
 }

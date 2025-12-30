@@ -8,6 +8,10 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./feature/auth/components/login/login').then((m) => m.Login),
   },
+  {
+    path: 'register',
+    loadComponent: () => import('./feature/auth/components/register/register').then((m) => m.Register),
+  },
 
   // 🔒 Protected app
   {
@@ -15,10 +19,14 @@ export const routes: Routes = [
     component: MainLayout,
     // canActivate: [authGuard],
     children: [
-      {
+            {
         path: '',
-        loadComponent: () => import('./feature/dashboard/members/members').then((m) => m.Members),
+        loadComponent: () => import('./feature/home/home').then((m) => m.Home),
       },
+      // {
+      //   path: '',
+      //   loadComponent: () => import('./feature/dashboard/members/members').then((m) => m.Members),
+      // },
       {
         path: 'dashboard',
         loadComponent: () =>
