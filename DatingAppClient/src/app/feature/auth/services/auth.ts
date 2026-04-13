@@ -4,6 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { LoginRequest } from '../models/login-request';
 import { Router } from '@angular/router';
 import { LoginResponse } from '../models/login-response';
+import { RegisterRequest } from '../models/register-request';
 
 @Injectable({
   providedIn: 'root',
@@ -31,5 +32,9 @@ export class Auth {
     this.loggedIn.set(false);
     this.currentUser.set(null);
     this.router.navigateByUrl('/login');
+  }
+
+    register(payload: RegisterRequest): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/account/register`, payload);
   }
 }

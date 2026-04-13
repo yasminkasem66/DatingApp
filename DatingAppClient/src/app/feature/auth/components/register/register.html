@@ -1,1 +1,113 @@
-<p>register works!</p>
+<p-toast></p-toast>
+
+<main
+  class="min-h-screen bg-gradient-to-br from-rose-50 via-white to-sky-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 flex items-center justify-center px-6"
+>
+  <section class="w-full max-w-6xl">
+    <div
+      class="relative overflow-hidden rounded-3xl border border-gray-200/60 bg-white/80 shadow-xl backdrop-blur-sm dark:border-white/10 dark:bg-gray-900/70"
+    >
+      <div class="grid gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:gap-16">
+        <!-- Left content stays as-is -->
+        <div class="flex flex-col justify-center">
+          <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+            Create your account
+          </h1>
+          <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+            Join our community and start building meaningful connections today.
+          </p>
+        </div>
+
+        <!-- Right: Register Form -->
+        <div
+          class="rounded-3xl bg-white p-8 shadow-lg dark:bg-gray-800"
+          aria-labelledby="register-form"
+        >
+          <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-6">
+            <!-- Display Name -->
+            <div>
+              <label for="displayName" class="block text-sm font-medium mb-1">
+                Display Name
+              </label>
+              <input
+                id="displayName"
+                pInputText
+                type="text"
+                formControlName="displayName"
+                class="w-full"
+                aria-required="true"
+              />
+              <small
+                *ngIf="submitted && f['displayName'].invalid"
+                class="text-red-500"
+              >
+                Display name is required
+              </small>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium mb-1">
+                Email
+              </label>
+              <input
+                id="email"
+                pInputText
+                type="email"
+                formControlName="email"
+                class="w-full"
+                aria-required="true"
+              />
+              <small
+                *ngIf="submitted && f['email'].invalid"
+                class="text-red-500"
+              >
+                Enter a valid email address
+              </small>
+            </div>
+
+            <!-- Password -->
+            <div>
+              <label for="password" class="block text-sm font-medium mb-1">
+                Password
+              </label>
+              <p-password
+                id="password"
+                formControlName="password"
+                [toggleMask]="true"
+                [feedback]="false"
+                styleClass="w-full"
+                inputStyleClass="w-full"
+                aria-required="true"
+              ></p-password>
+              <small
+                *ngIf="submitted && f['password'].invalid"
+                class="text-red-500"
+              >
+                Password must be at least 4 characters
+              </small>
+            </div>
+
+            <!-- Submit -->
+            <button
+              pButton
+              type="submit"
+              label="Register"
+              [disabled]="loading"
+              class="w-full rounded-xl bg-gradient-to-r from-rose-600 to-pink-500 border-none text-white font-semibold py-3 hover:from-rose-700 hover:to-pink-600 transition"
+              aria-label="Register"
+            ></button>
+
+            <!-- Spinner -->
+            <div *ngIf="loading" class="flex justify-center">
+              <p-progressSpinner
+                strokeWidth="4"
+                styleClass="w-8 h-8"
+              ></p-progressSpinner>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
